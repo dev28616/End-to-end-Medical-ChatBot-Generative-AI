@@ -1,7 +1,5 @@
 ## 📊 MedBot – AI Medical Chatbot
 
-![MedBot Banner](https://cdn.pixabay.com/photo/2017/06/08/01/06/medical-2389150_960_720.jpg)
-
 **MedBot** is an AI-powered medical assistant built using [Streamlit](https://streamlit.io/), [Google Gemini](https://ai.google.dev/), and [LangChain](https://www.langchain.com/). Ask any health-related question and get responses grounded in medical knowledge.
 
 ---
