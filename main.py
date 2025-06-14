@@ -14,13 +14,8 @@ from src.prompt import system_prompt
 # 🔐 Load environment
 # ======================
 load_dotenv()
-<<<<<<< HEAD
 os.environ["PINECONE_API_KEY"] = os.getenv("PINECONE_API_KEY")
 os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
-=======
-os.environ["PINECONE_API_KEY"] = st.secrets["PINECONE_API_KEY"]
-os.environ["GOOGLE_API_KEY"] = st.secrets["GEMINI_API_KEY"]
->>>>>>> 7f3566545d2d6284dd7bb07e675ecb0e082149ee
 
 # ======================
 # 📦 Setup embeddings & retrievers
