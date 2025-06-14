@@ -8,29 +8,17 @@
 
 ### 🚀 Features
 
-<<<<<<< HEAD
-- 💬 ChatGPT-style real-time medical Q\&A
-- 🧠 Powered by Google Gemini + LangChain
-- 🔍 Contextual memory using Pinecone (optional)
-- 🎨 Beautiful animated Streamlit UI
-- 🐳 Dockerized for easy deployment
-=======
 * 💬 ChatGPT-style real-time medical Q\&A
 * 🧠 Powered by Google Gemini + LangChain
 * 🔍 Contextual memory using Pinecone (optional)
 * 🎨 Beautiful animated Streamlit UI
 * 🐳 Dockerized for easy deployment
->>>>>>> dd5233b76e1879ed96779f5efb237e1343f3703f
 
 ---
 
 ### 🗄️ Demo
 
-<<<<<<< HEAD
-> _“What are the symptoms of dengue?”_
-=======
 > *“What are the symptoms of dengue?”*
->>>>>>> dd5233b76e1879ed96779f5efb237e1343f3703f
 
 ![chatbot-demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDZrbWYwbWttcTVkNzBkY3gyYTFjZnY4dTdrbDlwbHlwdzZzN3A3cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.gif)
 
@@ -38,19 +26,11 @@
 
 ### 🧑‍💻 Tech Stack
 
-<<<<<<< HEAD
-- `streamlit` – Frontend
-- `langchain` – Prompt handling
-- `langchain-google-genai` – Gemini model
-- `pinecone` (optional) – Vector retriever
-- `docker` – Containerization
-=======
 * `streamlit` – Frontend
 * `langchain` – Prompt handling
 * `langchain-google-genai` – Gemini model
 * `pinecone` (optional) – Vector retriever
 * `docker` – Containerization
->>>>>>> dd5233b76e1879ed96779f5efb237e1343f3703f
 
 ---
 
