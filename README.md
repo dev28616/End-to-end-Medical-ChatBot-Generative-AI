@@ -1,97 +1,163 @@
-## 📊 MedBot – AI Medical Chatbot
+# 🧠 MedBot: RAG-Based End-to-End Medical Chatbot
 
-**MedBot** is an AI-powered medical assistant built using [Streamlit](https://streamlit.io/), [Google Gemini](https://ai.google.dev/), and [LangChain](https://www.langchain.com/). Ask any health-related question and get responses grounded in medical knowledge.
-
----
-
-### 🚀 Features
-
-* 💬 ChatGPT-style real-time medical Q\&A
-* 🧠 Powered by Google Gemini + LangChain
-* 🔍 Contextual memory using Pinecone (optional)
-* 🎨 Beautiful animated Streamlit UI
-* 🐳 Dockerized for easy deployment
+A **Retrieval-Augmented Generation (RAG)** medical chatbot powered by **LangChain**, **Gemini API**, and **FAISS/Pinecone**, designed to provide accurate and context-rich answers from medical documents through a conversational UI built with **Streamlit**.
 
 ---
 
-### 🗄️ Demo
+## 📋 Table of Contents
 
-> *“What are the symptoms of dengue?”*
-
-![chatbot-demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDZrbWYwbWttcTVkNzBkY3gyYTFjZnY4dTdrbDlwbHlwdzZzN3A3cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.gif)
-
----
-
-### 🧑‍💻 Tech Stack
-
-* `streamlit` – Frontend
-* `langchain` – Prompt handling
-* `langchain-google-genai` – Gemini model
-* `pinecone` (optional) – Vector retriever
-* `docker` – Containerization
+* [Overview](#-overview)
+* [Key Features](#-key-features)
+* [Architecture](#-architecture)
+* [Prerequisites](#-prerequisites)
+* [Quick Start](#-quick-start)
+* [Example Queries](#-example-queries)
+* [File Structure](#-file-structure)
+* [Tech Stack](#-tech-stack)
+* [Acknowledgments](#-acknowledgments)
 
 ---
 
-### 📦 Setup Instructions
+## 🎯 Overview
 
-#### Clone the repo
+**MedBot** is a domain-specific chatbot built on the RAG (Retrieval-Augmented Generation) framework. It retrieves relevant information from user-uploaded medical PDFs and augments queries with context before passing them to a language model for accurate, grounded responses.
 
-```bash
-git clone https://github.com/dev28616/End-to-end-Medical-ChatBot-Generative-AI.git
-cd medbot-ai
+---
+
+## ✨ Key Features
+
+* 🔍 **Document-Based Knowledge**: Upload medical PDFs to extract relevant answers.
+* 🧠 **Gemini API Integration**: Powered by Google Gemini for intelligent language understanding.
+* 🗂️ **Retrieval with FAISS or Pinecone**: Embeds and indexes document chunks for fast similarity search.
+* 💬 **Chat Interface**: Built with Streamlit for seamless user experience.
+* 🐳 **Docker-Ready**: Easy containerization for deployment.
+
+---
+
+## 🏗️ Architecture
+
+### 📌 Flow
+
+```
+User Query → Streamlit UI → LangChain Pipeline → Vector DB (FAISS/Pinecone)
+→ Relevant Chunks → Prompt Construction → Gemini LLM → Answer → Display on UI
 ```
 
-#### Install dependencies (Python 3.10+)
+### 🖼️ Visual Diagram
+
+![RAG Workflow](./assets/rag-workflow.png)
+
+### 🧩 RAG Workflow Architecture
+
+This diagram illustrates the step-by-step flow of the RAG-based medical chatbot system using LangChain, vector DBs, and Gemini.
+
+![RAG Workflow](./assets/rag-workflow.png)
+
+> *This flowchart shows how the chatbot processes queries with retrieval and generation components.*
+
+---
+
+## 📋 Prerequisites
+
+* Python 3.8+
+* Google Gemini API Key
+* FAISS (for local use) or Pinecone account
+* Streamlit
+* Docker (optional)
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/medbot-rag.git
+cd medbot-rag
+```
+
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### Set environment variables
+### 3. Set Up Environment Variables
 
-Create a `.env` file or use Streamlit Cloud secrets:
+Create a `.env` file in the root:
 
-```env
-PINECONE_API_KEY=your-pinecone-key
-GEMINI_API_KEY=your-gemini-key
+```ini
+# Gemini API
+GEMINI_API_KEY=your_gemini_api_key
+
+# Pinecone (optional)
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_ENVIRONMENT=your_environment
+
+# Embedding & LLM models
+EMBEDDING_MODEL=text-embedding-ada-002
+LLM_MODEL=gemini-pro
 ```
 
-#### Run locally
+### 4. Embed Documents
 
 ```bash
-streamlit run main.py
+python store_index.py
 ```
 
----
+This will process your PDFs and store vector embeddings in FAISS or Pinecone.
 
-### 🐳 Docker Setup
-
-#### Build & run with Docker
+### 5. Launch the App
 
 ```bash
-docker build -t medbot-app .
-docker run -p 8501:8501 medbot-app
+streamlit run app.py
 ```
 
 ---
 
-### 🔐 Deployment (Streamlit Cloud)
+## 💬 Example Queries
 
-1. Push to GitHub
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Link your repo & add secrets
-4. Click **Deploy**
+* “What are the symptoms of pituitary tumors?”
+* “List treatment methods for gliomas.”
+* “Explain meningitis in simple terms.”
 
 ---
 
-### 📁 Project Structure
+## 📂 File Structure
 
 ```
-🔹 main.py
-🔹 Dockerfile
-🔹 requirements.txt
-🔹 .dockerignore
-🔹 src/
-├── prompt.py
-└── helper.py
+medbot-rag/
+├── app.py                 # Streamlit UI
+├── rag_pipeline.py        # LangChain logic
+├── store_index.py         # Embedding & vector store setup
+├── .env                   # API credentials
+├── requirements.txt
+└── README.md
 ```
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool       | Purpose                     |
+| ---------- | --------------------------- |
+| LangChain  | RAG pipeline orchestration  |
+| Gemini API | Natural language generation |
+| FAISS      | Local vector search         |
+| Pinecone   | Optional scalable vector DB |
+| Streamlit  | UI for user interaction     |
+| Python     | Core programming language   |
+| Docker     | Containerization (optional) |
+
+---
+
+## 🙌 Acknowledgments
+
+* Built on the concepts of RAG from LangChain and Gemini documentation.
+* Inspired by MedGraph-AI and LangChain vector search applications.
+
+---
+
+## 📢 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
