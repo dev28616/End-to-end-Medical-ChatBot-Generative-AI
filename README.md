@@ -47,7 +47,7 @@ User Query → Streamlit UI → LangChain Pipeline → Vector DB (FAISS/Pinecone
 
 This diagram illustrates the step-by-step flow of the RAG-based medical chatbot system using LangChain, vector DBs, and Gemini.
 
-![RAG Workflow](./assets/rag-workflow.png)
+![RAG Workflow](./assets/Rag-Workflow.png)
 
 > *This flowchart shows how the chatbot processes queries with retrieval and generation components.*
 
